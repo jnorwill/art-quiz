@@ -49,6 +49,7 @@ body {
 }
 .header {
     display: flex;
+    align-items: center;
     padding: 20px;
     &__settings {
         width: 30px;
@@ -100,6 +101,9 @@ body {
     position: relative;
     z-index: 1;
 }
+.home-hidden {
+    display: none;
+}
 .home-container {
     position: relative;
     &::before {
@@ -144,7 +148,6 @@ body {
     display: flex;
     gap: 50px;
     justify-content: left;
-    align-items: center;
     &__arrow {
         width: 10px;
         height: 20px;
@@ -285,6 +288,58 @@ body {
         color: #000000;
     }
 }
+.categories-header {
+    justify-content: space-between;
+    &__logo {
+        width: 166px;
+        height: 62px;
+    }
+    &__button {
+        width: 28px;
+        height: 28px;
+        background: url(../../assets/svg/home.svg) no-repeat 50% 50%;
+        background-size: contain;
+        transition: 0.8s;
+        margin-right: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+.categories-main {
+    &__title {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 50px;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+.categories-item {
+    &__text-container {
+        display: flex;
+        justify-content: space-between;
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 10px;
+    }
+    &__img {
+        width: 150px;
+        height: 150px;
+        border-radius: 15%;
+    }
+}
 
 @media (min-width: 768px) {
     .header {
@@ -325,6 +380,21 @@ body {
             height: 56px;
         }
     }
+    .categories-item {
+        &__img {
+            width: 200px;
+            height: 200px;
+        }
+        &__img_close {
+            filter: grayscale(1);
+        }
+        &__level {
+            color: $active-color;
+        }
+        &__level_hidden {
+            display: none;
+        }
+    }
 }
 @media (min-width: 1024px) {
     .header {
@@ -361,6 +431,12 @@ body {
         padding: 100px 100px 100px;
         &__wrapper {
             align-self: flex-start;
+        }
+    }
+    .categories-item {
+        &__img {
+            width: 250px;
+            height: 250px;
         }
     }
 }
