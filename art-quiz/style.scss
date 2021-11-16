@@ -411,6 +411,67 @@ body {
         margin-top: 10px;
     }
 }
+.question-picture-hidden {
+    display: none;
+}
+.question-picture-container {
+    flex-grow: 2;
+    padding: 20px;
+    width: 100%;
+}
+
+.question-picture-header {
+    display: flex;
+    align-items: center;
+    &__close {
+        background: url(../../assets/svg/close.svg) no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__all-time {
+        background-color: #ffffff;
+        border-radius: 4.5px;
+        height: 3px;
+        width: 100%;
+        margin: 0 15px;
+    }
+    &__current-time {
+        background-color: $active-color;
+        border-radius: 4.5px;
+        height: 3px;
+        width: 50%;
+    }
+    &__counter {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+.question-picture-main {
+    flex-grow: 2;
+    &__text {
+        font-size: 22px;
+        line-height: 28px;
+        margin: 35px 0;
+    }
+    &__answer-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__answer {
+        background-color: #ffbca2;
+        width: 48%;
+        height: 165px;
+        margin-top: 10px;
+        border-radius: 20px;
+    }
+}
 
 @media (min-width: 768px) {
     .header {
@@ -471,6 +532,15 @@ body {
         max-width: 770px;
         margin: 0 auto;
     }
+    .question-picture-container {
+        padding: 50px;
+        max-width: 770px;
+        margin: 0 auto;
+    }
+    .question-picture-main__answer {
+        height: 300px;
+        margin-top: 20px;
+    }
 }
 @media (min-width: 1024px) {
     .header {
@@ -528,5 +598,16 @@ body {
     }
     .question-author-main__answer {
         height: 62px;
+    }
+    .question-picture-header__close {
+        width: 18px;
+        height: 18px;
+    }
+    .question-picture-header__counter {
+        font-size: 28px;
+        line-height: 28px;
+    }
+    .question-picture-main__text {
+        font-size: 28px;
     }
 }
