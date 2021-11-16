@@ -288,6 +288,10 @@ body {
         color: #000000;
     }
 }
+
+.categories-hidden {
+    display: none;
+}
 .categories-header {
     justify-content: space-between;
     &__logo {
@@ -338,6 +342,73 @@ body {
         width: 150px;
         height: 150px;
         border-radius: 15%;
+    }
+}
+
+.question-author-hidden {
+    display: none;
+}
+.question-author-container {
+    flex-grow: 2;
+    padding: 20px;
+    width: 100%;
+}
+
+.question-author-header {
+    display: flex;
+    align-items: center;
+    &__close {
+        background: url(../../assets/svg/close.svg) no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__all-time {
+        background-color: #ffffff;
+        border-radius: 4.5px;
+        height: 3px;
+        width: 100%;
+        margin: 0 15px;
+    }
+    &__current-time {
+        background-color: $active-color;
+        border-radius: 4.5px;
+        height: 3px;
+        width: 50%;
+    }
+    &__counter {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+.question-author-main {
+    flex-grow: 2;
+    &__text {
+        font-size: 22px;
+        line-height: 28px;
+        margin: 35px 0;
+    }
+    &__img {
+        background-color: #ffbca2;
+        width: 100%;
+        height: 46vh;
+        margin: 10px 0;
+        border-radius: 20px;
+    }
+    &__answer-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__answer {
+        width: 48%;
+        height: 48px;
+        margin-top: 10px;
     }
 }
 
@@ -395,6 +466,11 @@ body {
             display: none;
         }
     }
+    .question-author-container {
+        padding: 50px;
+        max-width: 770px;
+        margin: 0 auto;
+    }
 }
 @media (min-width: 1024px) {
     .header {
@@ -438,5 +514,19 @@ body {
             width: 250px;
             height: 250px;
         }
+    }
+    .question-author-header__close {
+        width: 18px;
+        height: 18px;
+    }
+    .question-author-header__counter {
+        font-size: 28px;
+        line-height: 28px;
+    }
+    .question-author-main__text {
+        font-size: 28px;
+    }
+    .question-author-main__answer {
+        height: 62px;
     }
 }
