@@ -316,15 +316,16 @@
                     <div class="question-picture-header__counter">3:50</div>
                 </div>
                 <div class="question-picture-main">
-                    <p class="question-picture-main__text">Which is <span>Edvard Munch</span> picture?</p>
-                        <div class="question-picture-main__answer-list">
-                            <button class="question-picture-main__answer"></button>
-                            <button class="question-picture-main__answer"></button>
-                        </div>
-                        <div class="question-picture-main__answer-list">
-                            <button class="question-picture-main__answer"></button>
-                            <button class="question-picture-main__answer"></button>
-                        </div>
+                    <p class="question-picture-main__text">Which is <span>Edvard
+                            Munch</span> picture?</p>
+                    <div class="question-picture-main__answer-list">
+                        <button class="question-picture-main__answer"></button>
+                        <button class="question-picture-main__answer"></button>
+                    </div>
+                    <div class="question-picture-main__answer-list">
+                        <button class="question-picture-main__answer"></button>
+                        <button class="question-picture-main__answer"></button>
+                    </div>
                 </div>
             </div>
             <footer class="footer">
@@ -335,6 +336,45 @@
                     <span class="footer__year">2021</span>
                 </div>
             </footer>
+        </div>
+        <div class="quit quit-hidden pop-up-container">
+            <div class="pop-up">
+                <div class="quit__close pop-up__close"></div>
+                <p class="pop-up__text">Do you really want to quit the game?</p>
+                <div class="pop-up__list">
+                    <button class="quit__button_cancel pop-up__button button">Cancel</button>
+                    <button class="quit__button_yes pop-up__button
+                        pop-up__button_pink button">Yes</button>
+                </div>
+            </div>
+        </div>
+        <div class="win win-hidden pop-up-container">
+            <div class="pop-up">
+                <div class="win__close pop-up__close"></div>
+                <div class="pop-up__img win__img"></div>
+                <p class="pop-up__big-text"><span>10</span>/10</p>
+                <p class="pop-up__text">Congratulations!</p>
+                <div class="pop-up__list">
+                    <button class="win__button_home pop-up__button button">Home</button>
+                    <button class="win__button_next pop-up__button
+                        pop-up__button_pink button">Next Quiz</button>
+                </div>
+            </div>
+        </div>
+        <div class="result-hidden pop-up-container">
+            <div class="result pop-up">
+                <div class="result__picture">
+                    <div class="result__picture_correct result-hidden">
+                        <img src="./assets/svg/correct.svg" alt="ok">
+                    </div>
+                    <div class="result__picture_wrong result-hidden">
+                        <img src="./assets/svg/wrong.svg" alt="ok">
+                    </div>
+                </div>
+                <p class="result__name">Girl with a Pearl Earring</p>
+                <p class="result__inf">Johannes Vermeer, 1665</p>
+                <button class="result__button">Next</button>
+            </div>
         </div>
     </body>
 </html>
