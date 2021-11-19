@@ -1,0 +1,183 @@
+.settings {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.settings-header {
+    display: flex;
+    gap: 50px;
+    justify-content: left;
+    &__arrow {
+        width: 10px;
+        height: 20px;
+        background: url(../../assets/svg/arrow.svg) no-repeat;
+        background-size: contain;
+        transition: 0.3;
+        &:hover{
+            cursor: pointer;
+            background: url(../../assets/svg/arrow-pink.svg) no-repeat;
+            background-size: contain; 
+        }
+    }
+    &__title {
+        font-family: Gilroy;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+    }
+}
+.settings-main {
+    padding: 0 20px 30px;
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 2;
+        width: 100%;
+    }
+    &__title {
+        font-family: Gilroy;
+        font-weight: bold;
+        font-size: 30px;
+        margin: 50px 0 42px;
+    }
+    &__container {
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__volume-all {
+        width: 100%;
+        height: 3px;
+        border-radius: 5px;
+        background: #a4a4a4;
+    }
+    &__volume-current {
+        width: 50%;
+        height: 3px;
+        border-radius: 5px;
+        background: $active-button-color;
+        position: relative;
+    }
+    &__volume-point {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        position: absolute;
+        top: 50%;
+        transform: translate(50%, -50%);
+        right: 0;
+    }
+    &__volume-img-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__volume-on {
+        background: url(../../assets/svg/volume-on.svg) no-repeat;
+        background-size: contain;
+        width: 23px;
+        height: 16px;
+    }
+    &__volume-off {
+        background: url(../../assets/svg/volume-off.svg) no-repeat;
+        background-size: contain;
+        width: 23px;
+        height: 16px;
+    }
+    &__container_volume {
+        width: 100%;
+        margin-top: 25px;
+    }
+    &__container_time {
+        width: 100px;
+    }
+    &__time-label {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+    }
+    &__time-toggle {
+        transition: 0.3s;
+        width: 48px;
+        height: 24px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        border-radius: 12px;
+        background-color: transparent;
+        border: solid 1px #ffffff;
+        &:hover{
+            background-color: $active-button-color;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    &__time-toggle-point {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin: 4px;
+        transition: 0.3s;
+    }
+    &__time-button {
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+    }
+    &__time-value {
+        margin: 0 25px;
+        font-family: Gilroy;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+    }
+    &__container_button {
+        width: 100%;
+        gap: 16px;
+        justify-content: right;
+        margin-top: 50px;
+    }
+    &__button {
+        width: 156px;
+        height: 56px;
+    }
+    &__button_save {
+        background-color: $active-button-color;
+        border: none;
+        color: #000000;
+    }
+}
+
+@media (min-width: 768px){
+    .settings-main {
+        padding: 50px 75px 100px;
+        &__wrapper {
+            align-items: flex-start;
+            
+            width: 700px;
+        }
+        &__title {
+            margin-left: 5px;
+        }
+        &__button {
+            width: 293px;
+            height: 56px;
+        }
+    }
+}
+
+@media (min-width: 1024px){
+    .settings-main {
+        padding: 100px 100px 100px;
+        &__wrapper {
+            align-self: flex-start;
+        }
+    }
+}
