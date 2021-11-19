@@ -1,2 +1,4 @@
 import './index.scss'
-export {default} from './index.html'
+import settingsHtml from './index.html'
+
+export default settingsHtml

@@ -36,6 +36,12 @@
     }
 }
 .categories-item {
+    &:hover{
+        cursor: pointer;
+        .categories-item__img_close {
+            filter: grayscale(0);
+        }
+    }
     &__text-container {
         display: flex;
         justify-content: space-between;
@@ -51,6 +57,15 @@
         height: 150px;
         border-radius: 15%;
     }
+    &__img_close {
+        filter: grayscale(1);
+    }
+    &__level {
+        color: $active-button-color;
+    }
+    &__level_hidden {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {
@@ -58,15 +73,6 @@
         &__img {
             width: 200px;
             height: 200px;
-        }
-        &__img_close {
-            filter: grayscale(1);
-        }
-        &__level {
-            color: $active-button-color;
-        }
-        &__level_hidden {
-            display: none;
         }
     }
 }
