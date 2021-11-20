@@ -8,6 +8,11 @@ module.exports = {
         filename: 'main.js',
     },
     mode: "development",
+    resolve: {
+        alias: {
+            src: path.resolve(__dirname, 'src/'),
+            assets: path.resolve(__dirname, 'src/assets/'),
+        }},
     module: {
         rules: [
             {
@@ -39,12 +44,16 @@ module.exports = {
             {
                 test: /\.(svg|png|jpg)$/,
                 type: 'asset/resource'
-              }
+            },
+            {
+                test: /\.(mp3|wav)$/,
+                type: 'asset/resource'
+            },
+           
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-
             template: './src/index.html',
             filename: './index.html'
         })

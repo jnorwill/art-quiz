@@ -13,10 +13,10 @@
         background: url(../../assets/svg/arrow.svg) no-repeat;
         background-size: contain;
         transition: 0.3;
-        &:hover{
+        &:hover {
             cursor: pointer;
             background: url(../../assets/svg/arrow-pink.svg) no-repeat;
-            background-size: contain; 
+            background-size: contain;
         }
     }
     &__title {
@@ -53,6 +53,9 @@
         height: 3px;
         border-radius: 5px;
         background: #a4a4a4;
+        &:hover {
+            cursor: pointer;
+        }
     }
     &__volume-current {
         width: 50%;
@@ -106,13 +109,12 @@
         transition: 0.3s;
         width: 48px;
         height: 24px;
-        display: flex;
-        justify-content: right;
-        align-items: center;
+        position: relative;
         border-radius: 12px;
         background-color: transparent;
         border: solid 1px #ffffff;
-        &:hover{
+        box-sizing: border-box;
+        &:hover {
             background-color: $active-button-color;
             border: none;
             cursor: pointer;
@@ -123,8 +125,15 @@
         height: 16px;
         border-radius: 50%;
         background-color: #ffffff;
-        margin: 4px;
+        margin: 3px 5px;
         transition: 0.3s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        &-checked {
+            transform: translateX(20px);
+        }
     }
     &__time-button {
         width: 33px;
@@ -144,36 +153,36 @@
         justify-content: right;
         margin-top: 50px;
     }
-    &__button {
-        width: 156px;
-        height: 56px;
-    }
-    &__button_save {
-        background-color: $active-button-color;
-        border: none;
-        color: #000000;
-    }
+    // &__button {
+    //     width: 156px;
+    //     height: 56px;
+    // }
+    // &__button_save {
+    //     background-color: $active-button-color;
+    //     border: none;
+    //     color: #000000;
+    // }
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .settings-main {
         padding: 50px 75px 100px;
         &__wrapper {
             align-items: flex-start;
-            
+
             width: 700px;
         }
         &__title {
             margin-left: 5px;
         }
-        &__button {
-            width: 293px;
-            height: 56px;
-        }
+        // &__button {
+        //     width: 293px;
+        //     height: 56px;
+        // }
     }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
     .settings-main {
         padding: 100px 100px 100px;
         &__wrapper {

@@ -2,173 +2,120 @@ import './index.scss'
 import quitHtml from './pages/quit-pop-up'
 import winHtml from './pages/win-pop-up'
 import resultHtml from './pages/result-pop-up'
-import questionPictureHtml from './pages/question-picture'
-import questionAuthorHtml from './pages/question-author'
+import questionPictureHtml, { runScript as questionPictureRunScript } from './pages/question-picture'
+import questionAuthorHtml, { runScript as questionAuthorRunScript } from './pages/question-author'
 import categoriesHtml from './pages/categories'
-import settingsHtml from './pages/settings'
+import settingsHtml, { runScript as settingsRunScript } from './pages/settings'
 import homeHtml from './pages/home'
+import {
+    click, correctanswer, endround,
+    wronganswer
+} from 'src/assets/audio/index.js'
 
 const openPage = (newPage) => {
     document.body.innerHTML = newPage
 }
-const openPopUp = (newPopUp) => {
+export const openPopUp = (newPopUp) => {
     document.body.append(newPopUp)
 }
 
-document.body.innerHTML = homeHtml
-let i = 'home'
-document.addEventListener('click', (event) => {
-    const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
-    console.log(i, event.target.closest('.categories-item'), event.currentTarget)
 
+export const playAudioClick = () => {
+    let volume = localStorage.getItem('volume')
+    const audio = new Audio()
+    audio.src = click
+    audio.volume = volume / 100
+    audio.play()
+}
+
+export const playAudioWrong = () => {
+    let volume = localStorage.getItem('volume')
+    const audio = new Audio()
+    audio.src = wronganswer
+    audio.volume = volume / 100
+    audio.play()
+}
+
+document.body.innerHTML = homeHtml
+let whatWasBefore = 'home'
+document.addEventListener('click', (event) => {
+
+    const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
     switch (actionType) {
         case 'open-settings':
+            playAudioClick()
             openPage(settingsHtml)
+            settingsRunScript()
             break;
 
         case 'open-back':
-            if (i === 'home') {
+            playAudioClick()
+            if (whatWasBefore === 'home') {
                 openPage(homeHtml)
-                i = 'home'
-            } else if (i === 'caregories-artist' || i === 'caregories-picture') {
+                whatWasBefore = 'home'
+            } else if (whatWasBefore === 'caregories-artist' || whatWasBefore === 'caregories-picture') {
                 openPage(categoriesHtml)
             }
             break;
 
         case 'open-home':
-            i = 'home'
+            playAudioClick()
+            whatWasBefore = 'home'
             openPage(homeHtml)
             break;
 
         case 'open-caregories-artist':
-            i = 'caregories-artist'
+            playAudioClick()
+            whatWasBefore = 'caregories-artist'
             openPage(categoriesHtml)
             break;
 
         case 'open-caregories-picture':
-            i = 'caregories-picture'
+            playAudioClick()
+            whatWasBefore = 'caregories-picture'
             openPage(categoriesHtml)
             break;
 
         case 'open-portrait':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-landscape':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-still-life':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-graphic':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-antique':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-avant-garde':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-renaissance':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-surrealism':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-kitsch':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-minimalism':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-avangard':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
-            }
-            break;
-
         case 'open-industrial':
-            if (i === 'caregories-picture') {
+            playAudioClick()
+            if (whatWasBefore === 'caregories-picture') {
                 openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
+                questionPictureRunScript()
+            } else if (whatWasBefore === 'caregories-artist') {
                 openPage(questionAuthorHtml)
-            }
-            break;
-
-        case 'open-industrial':
-            if (i === 'caregories-picture') {
-                openPage(questionPictureHtml)
-            } else if (i === 'caregories-artist') {
-                openPage(questionAuthorHtml)
+                questionAuthorRunScript()
             }
             break;
 
         case 'open-quit-pop-up':
+            playAudioClick()
             openPopUp(quitHtml)
-
             break;
 
         case 'close-pop-up':
+            playAudioClick()
             document.querySelector('.pop-up-container').remove()
-
             break;
+
+        
 
 
         case 'open-categories':
-            if (i === 'caregories-picture') {
+            playAudioClick()
+            if (whatWasBefore === 'caregories-picture') {
                 openPage(categoriesHtml)
-            } else if (i === 'caregories-artist') {
+            } else if (whatWasBefore === 'caregories-artist') {
                 openPage(categoriesHtml)
             }
             break;
