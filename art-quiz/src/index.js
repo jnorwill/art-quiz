@@ -4,7 +4,7 @@ import winHtml from './pages/win-pop-up'
 import resultHtml from './pages/result-pop-up'
 import questionPictureHtml, { runScript as questionPictureRunScript } from './pages/question-picture'
 import questionAuthorHtml, { runScript as questionAuthorRunScript } from './pages/question-author'
-import categoriesHtml from './pages/categories'
+import categoriesHtml, { runScript as categoriesRunScript } from './pages/categories'
 import settingsHtml, { runScript as settingsRunScript } from './pages/settings'
 import homeHtml from './pages/home'
 import {
@@ -18,7 +18,6 @@ const openPage = (newPage) => {
 export const openPopUp = (newPopUp) => {
     document.body.append(newPopUp)
 }
-
 
 export const playAudioClick = () => {
     let volume = localStorage.getItem('volume')
@@ -38,6 +37,7 @@ export const playAudioWrong = () => {
 
 document.body.innerHTML = homeHtml
 let whatWasBefore = 'home'
+let whatStyle
 document.addEventListener('click', (event) => {
 
     const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
@@ -65,15 +65,36 @@ document.addEventListener('click', (event) => {
             break;
 
         case 'open-caregories-artist':
+            categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-artist'
             openPage(categoriesHtml)
             break;
 
         case 'open-caregories-picture':
+            categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-picture'
             openPage(categoriesHtml)
+            break;
+
+        case 'open-quit-pop-up':
+            playAudioClick()
+            openPopUp(quitHtml)
+            break;
+
+        case 'close-pop-up':
+            playAudioClick()
+            document.querySelector('.pop-up-container').remove()
+            break;
+
+        case 'open-categories':
+            playAudioClick()
+            if (whatWasBefore === 'caregories-picture') {
+                openPage(categoriesHtml)
+            } else if (whatWasBefore === 'caregories-artist') {
+                openPage(categoriesHtml)
+            }
             break;
 
         case 'open-portrait':
@@ -97,29 +118,6 @@ document.addEventListener('click', (event) => {
                 questionAuthorRunScript()
             }
             break;
-
-        case 'open-quit-pop-up':
-            playAudioClick()
-            openPopUp(quitHtml)
-            break;
-
-        case 'close-pop-up':
-            playAudioClick()
-            document.querySelector('.pop-up-container').remove()
-            break;
-
-        
-
-
-        case 'open-categories':
-            playAudioClick()
-            if (whatWasBefore === 'caregories-picture') {
-                openPage(categoriesHtml)
-            } else if (whatWasBefore === 'caregories-artist') {
-                openPage(categoriesHtml)
-            }
-            break;
-
         default:
             break;
     }
