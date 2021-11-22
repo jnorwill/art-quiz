@@ -2,20 +2,39 @@ import './index.scss'
 export { default } from './index.html'
 
 export const runScript = () => {
-    const resultPortrait = document.querySelector('.categories-main')
-    // const resultIandscape = document.querySelector('.categories-current-landscape')
-    // const resultstillLife = document.querySelector('.categories-current-still-life')
 
-    const style = localStorage.getItem('style')
     const whatWasBefore = localStorage.getItem(`whatWasBefore`)
 
-    const permanentResult = localStorage.getItem(`permanent ${whatWasBefore} ${style} correct answer`)
-    // resultPortrait.innerHTML = `${permanentResult}`
-    console.log(document, resultPortrait)
-    // if (resultPortrait.closest.classList.contain('categories-item__level_hidden')){
-    //     resultPortrait.closest.classList.remove('categories-item__level_hidden')  
-    // }
-    
+    const showFinalResult = (style) => {
+        const text = document.querySelector(`.categories-current-${style.toLowerCase()}`)
+        const textContainer = document.querySelector(`.categories-item__level_${style.toLowerCase()}`)
+        const img = document.querySelector(`.categories-item__img_${style.toLowerCase()}`)
+        const result = localStorage.getItem(`permanent ${whatWasBefore} ${style} correct answer`)
+        if (result > 0) {
+            if (textContainer.classList.contains('categories-item__level_hidden')) {
+                img.classList.remove('categories-item__img_close')
+            }
+            if (textContainer.classList.contains('categories-item__level_hidden')) {
+                textContainer.classList.remove('categories-item__level_hidden')
+            }
+            text.innerHTML = `${result}`
+        }
+    }
+
+    showFinalResult('Portrait')
+    showFinalResult('Landscape')
+    showFinalResult('StillLife')
+    showFinalResult('Graphic')
+    showFinalResult('Antique')
+    showFinalResult('AvantGarde')
+    showFinalResult('Renaissance')
+    showFinalResult('Surrealism')
+    showFinalResult('Kitsch')
+    showFinalResult('Minimalism')
+    showFinalResult('Avangard')
+    showFinalResult('Industrial')
+
+
     document.addEventListener('click', (event) => {
         const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
         switch (actionType) {
