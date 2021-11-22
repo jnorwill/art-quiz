@@ -43,6 +43,14 @@ export const playAudioCorrect = () => {
     audio.play()
 }
 
+export const playAudioEnd = () => {
+    let volume = localStorage.getItem('volume')
+    const audio = new Audio()
+    audio.src = endround
+    audio.volume = volume / 100
+    audio.play()
+}
+
 document.body.innerHTML = homeHtml
 let whatWasBefore = 'home'
 document.addEventListener('click', (event) => {
@@ -72,19 +80,19 @@ document.addEventListener('click', (event) => {
             break;
 
         case 'open-caregories-artist':
+            openPage(categoriesHtml)
             categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-artist'
-            localStorage.setItem(`whatWasBefore`, `caregories-artist`)
-            openPage(categoriesHtml)
+            localStorage.setItem(`whatWasBefore`, `artist`)
             break;
 
         case 'open-caregories-picture':
+            openPage(categoriesHtml)
             categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-picture'
-            localStorage.setItem(`whatWasBefore`, `caregories-picture`)
-            openPage(categoriesHtml)
+            localStorage.setItem(`whatWasBefore`, `picture`)
             break;
 
         case 'open-quit-pop-up':

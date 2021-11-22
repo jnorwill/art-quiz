@@ -18,7 +18,8 @@ export const runScript = () => {
     const resultYear = div.querySelector('.result__year')
     const index = localStorage.getItem('indexPicture')
     const style = localStorage.getItem('style')
-    const arr = 'infPicture' + style
+    const whatWasBefore = localStorage.getItem(`whatWasBefore`)
+    const arr = whatWasBefore + style
     resultImg.style.backgroundImage = `url(${images[arr][index].imageNum})`
     resultName.innerHTML = `${images[arr][index].name}`
     resultAuthor.innerHTML = `${images[arr][index].author}`

@@ -241,7 +241,7 @@ import img238 from './assets/full/238full.jpg'
 import img239 from './assets/full/239full.jpg'
 
 const images = {
-    infArtistPortrait: [
+    artistPortrait: [
         {
             author: 'Павел Федотов',
 
@@ -303,7 +303,7 @@ const images = {
             year: '1877',
             imageNum: img9,
         }],
-    infArtistLandscape: [
+    artistLandscape: [
         {
             author: 'Фёдор Васильев',
             name: 'Мокрый луг',
@@ -364,7 +364,7 @@ const images = {
             year: '1898',
             imageNum: img19,
         }],
-    infArtistStillLife: [
+    artistStillLife: [
         {
             author: 'Бартоломео Мурильо',
             name: 'Мадонна с четками',
@@ -425,7 +425,7 @@ const images = {
             year: '1895',
             imageNum: img29,
         }],
-    infArtistGraphic: [
+    artistGraphic: [
         {
             author: 'Владимир Боровиковский',
             name: 'Портрет Лопухиной',
@@ -486,7 +486,7 @@ const images = {
             year: '1895',
             imageNum: img39,
         }],
-    infArtistAntique: [
+    artistAntique: [
         {
             author: 'Виктор Васнецов',
             name: 'Три царевны подземного царства',
@@ -547,7 +547,7 @@ const images = {
             year: '1898',
             imageNum: img49,
         }],
-    infArtistAvantGarde: [
+    artistAvantGarde: [
         {
             author: 'Густав Климт',
             name: 'Золотая Адель',
@@ -608,7 +608,7 @@ const images = {
             year: '1931',
             imageNum: img59,
         }],
-    infArtistRenaissance: [
+    artistRenaissance: [
         {
             author: 'Пьер Огюст Ренуар',
             name: 'Две девушки',
@@ -669,7 +669,7 @@ const images = {
             year: '1819',
             imageNum: img69,
         }],
-    infArtistSurrealism: [
+    artistSurrealism: [
         {
             author: 'Иван Шишкин',
             name: 'Утро в сосновом лесу',
@@ -730,7 +730,7 @@ const images = {
             year: '1516',
             imageNum: img79,
         }],
-    infArtistKitsch: [
+    artistKitsch: [
         {
             author: 'Карл Брюллов',
             name: 'Всадница',
@@ -791,7 +791,7 @@ const images = {
             year: '1506',
             imageNum: img89,
         }],
-    infArtistMinimalism: [
+    artistMinimalism: [
         {
             author: 'Василий тропинин',
             name: 'Девушка с горшком роз',
@@ -852,7 +852,7 @@ const images = {
             year: '1872',
             imageNum: img99,
         }],
-    infArtistAvangard: [
+    artistAvangard: [
         {
             author: 'Василий Суриков',
             name: 'Боярыня Морозова',
@@ -913,7 +913,7 @@ const images = {
             year: '1665',
             imageNum: img109,
         }],
-    infArtistIndustrial: [
+    artistIndustrial: [
         {
             author: 'Анри Руссо',
             name: 'Спящая цыганка',
@@ -974,7 +974,7 @@ const images = {
             year: '1601',
             imageNum: img119,
         }],
-    infPicturePortrait: [
+    picturePortrait: [
         {
             author: 'Альбрехт Дюрер',
             name: 'Праздник венков из роз',
@@ -1035,7 +1035,7 @@ const images = {
             year: '1883',
             imageNum: img129,
         }],
-    infPictureLandscape: [
+    pictureLandscape: [
         {
             author: 'Эжен Делакруа',
             name: 'Свобода, ведущая народ',
@@ -1096,7 +1096,7 @@ const images = {
             year: '1875',
             imageNum: img139,
         }],
-    infPictureStillLife: [
+    pictureStillLife: [
         {
             author: 'Пьер Огюст Ренуар',
             name: 'Бал в Мулен де ла Галетт',
@@ -1157,7 +1157,7 @@ const images = {
             year: '1827',
             imageNum: img149,
         }],
-    infPictureGraphic: [
+    pictureGraphic: [
         {
             author: 'Виктор Васнецов',
             name: 'Царь Иван Васильевич Грозный',
@@ -1218,7 +1218,7 @@ const images = {
             year: '1870',
             imageNum: img159,
         }],
-    infPictureAntique: [
+    pictureAntique: [
         {
             author: 'Караваджо',
             name: 'Отдых на пути в Египет',
@@ -1279,7 +1279,7 @@ const images = {
             year: '1518',
             imageNum: img169,
         }],
-    infPictureAvantGarde: [
+    pictureAvantGarde: [
         {
             author: 'Василий Тропинин',
             name: 'Кружевница',
@@ -1340,7 +1340,7 @@ const images = {
             year: '1877',
             imageNum: img179,
         }],
-    infPictureRenaissance: [
+    pictureRenaissance: [
         {
             author: 'Илья Репин',
             name: 'Садко',
@@ -1401,7 +1401,7 @@ const images = {
             year: '1632',
             imageNum: img189,
         }],
-    infPictureSurrealism: [
+    pictureSurrealism: [
         {
             author: 'Питер Пауль Рубенс',
             name: 'Похищение Орфии Бореем',
@@ -1462,7 +1462,7 @@ const images = {
             year: '1888',
             imageNum: img199,
         }],
-    infPictureKitsch: [
+    pictureKitsch: [
         {
             author: 'Сандро Боттичелли',
             name: 'Рождение Венеры',
@@ -1523,7 +1523,7 @@ const images = {
             year: '1884',
             imageNum: img209,
         }],
-    infPictureMinimalism: [
+    pictureMinimalism: [
         {
             author: 'Ян Вермеер',
             name: 'Астроном',
@@ -1584,7 +1584,7 @@ const images = {
             year: '1848',
             imageNum: img219,
         }],
-    infPictureAvangard: [
+    pictureAvangard: [
         {
             author: 'Питер Брейгель',
             name: 'Вавилонская башня',
@@ -1645,7 +1645,7 @@ const images = {
             year: '1903',
             imageNum: img229,
         }],
-    infPictureIndustrial: [
+    pictureIndustrial: [
         {
             author: 'Исаак Левитан',
             name: 'Весна – большая вода',
