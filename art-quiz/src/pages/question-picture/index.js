@@ -5,12 +5,12 @@ import { playAudioClick } from '../../index.js'
 import { openPopUp } from '../../index.js'
 import images from '../../images.js'
 import { runScript as resultRunScript } from '../result-pop-up/index.js'
-import winHtml from '../win-pop-up'
+import { runScript as winHtmlScript } from '../win-pop-up'
+// import winHtml from '../win-pop-up'
 
 
 export const runScript = () => {
-
-    const timeCounter = document.querySelector('.question-counter')
+    const timeCounter = document.querySelector('.categories-main')
     let isTime = localStorage.getItem('isTime')
     let secondsLeft = +localStorage.getItem('timeValue')
     let timerId
@@ -40,61 +40,72 @@ export const runScript = () => {
     const answerArr = document.querySelectorAll('.question-picture-main__answer')
     let indexPicture = 0
     localStorage.setItem('indexPicture', `${indexPicture}`)
-    
-    
+
+
     const changeQuestion = () => {
         const style = localStorage.getItem('style')
-        console.log(style)
         const arr = 'infPicture' + style
         authorText.innerHTML = `${images[arr][indexPicture].author}`
         const randomRight = Math.floor(Math.random() * 4)
         const allStyles = Object.keys(images)
         answerArr.forEach((item, index) => {
+            if (item.classList.contains('wrong-answer')) {
+                item.classList.remove('wrong-answer')
+            } else if (item.classList.contains('correct-answer')) {
+                item.classList.remove('correct-answer')
+            }
             let randomWrong = Math.floor(Math.random() * 9)
             const randomStyle = Math.floor(Math.random() * 23)
             const type = allStyles[randomStyle]
             let pathWrong = images[type][randomWrong].imageNum
             const pathRight = images[arr][indexPicture].imageNum
-            if (index != randomRight && images[type][randomWrong].author != images[arr][indexPicture].author) {
-                console.log('111',index, images[type][randomWrong].author)
-
-                item.style.backgroundImage = `url(${pathWrong})`
-            } else if (images[type][randomWrong].author === images[arr][indexPicture].author) {
-                console.log('222',index, images[type][randomWrong].author)
-
-                randomWrong = Math.floor(Math.random() * 9)
-                pathWrong = images[type][randomWrong].imageNum
-                item.style.backgroundImage = `url(${pathWrong})`
-                console.log('333',index, images[type][randomWrong].author)
-
-            } else if (index === randomRight) {
-                console.log('444', index, images[arr][indexPicture].author, arr)
-
+            if (index === randomRight) {
                 item.style.backgroundImage = `url(${pathRight})`
-            } 
+                item.classList.add('correct-answer')
+            } else if (index != randomRight) {
+                if (images[type][randomWrong].author != images[arr][indexPicture].author) {
+                    item.style.backgroundImage = `url(${pathWrong})`
+                    item.classList.add('wrong-answer')
+                } else if (images[type][randomWrong].author === images[arr][indexPicture].author) {
+                    randomWrong = Math.floor(Math.random() * 9)
+                    pathWrong = images[type][randomWrong].imageNum
+                    item.style.backgroundImage = `url(${pathWrong})`
+                    item.classList.add('wrong-answer')
+                }
+            }
         })
     }
 
-        setTimeout(() => {
-            changeQuestion()
-            
-        })
+    setTimeout(() => {
+        changeQuestion()
 
+    })
+
+
+    let numberAnswer = 0
     document.addEventListener('click', (event) => {
+
         const actionType = (event.target).dataset?.actionType
         switch (actionType) {
             case 'open-result-pop-up':
+
+                const style = localStorage.getItem('style')
+                const whatWasBefore = localStorage.getItem(`whatWasBefore`)
                 playAudioClick()
                 clearTimeout(timerId)
                 secondsLeft = +localStorage.getItem('timeValue')
-                if (indexPicture < 9) {
+                if (indexPicture < 10) {
                     openPopUp(resultRunScript())
                     indexPicture++
                     localStorage.setItem('indexPicture', `${indexPicture}`)
-                } else {
-                    openPopUp(winHtml)
-                    indexPicture = 0
-                    localStorage.setItem('indexPicture', `${indexPicture}`)
+
+                    if (event.target.classList.contains('wrong-answer')) {
+                        localStorage.setItem('answer now', `false`)
+                    } else if (event.target.classList.contains('correct-answer')) {
+                        numberAnswer++
+                        localStorage.setItem(`${whatWasBefore} ${style} correct answer`, `${numberAnswer}`)
+                        localStorage.setItem('answer now', `true`)
+                    }
                 }
                 break;
 
@@ -103,8 +114,13 @@ export const runScript = () => {
                 document.querySelector('.pop-up-container').remove()
                 if (indexPicture < 10) {
                     changeQuestion()
+                    startTimer()
+                } else if (indexPicture = 10) {
+                    openPopUp(winHtmlScript())
+                    indexPicture = 0
+                    localStorage.setItem('indexPicture', `${indexPicture}`)
                 }
-                startTimer()
+
                 break;
 
             case 'open-quit-pop-up':

@@ -2,10 +2,22 @@ import './index.scss'
 export { default } from './index.html'
 
 export const runScript = () => {
+    const resultPortrait = document.querySelector('.categories-main')
+    // const resultIandscape = document.querySelector('.categories-current-landscape')
+    // const resultstillLife = document.querySelector('.categories-current-still-life')
+
+    const style = localStorage.getItem('style')
+    const whatWasBefore = localStorage.getItem(`whatWasBefore`)
+
+    const permanentResult = localStorage.getItem(`permanent ${whatWasBefore} ${style} correct answer`)
+    // resultPortrait.innerHTML = `${permanentResult}`
+    console.log(document, resultPortrait)
+    // if (resultPortrait.closest.classList.contain('categories-item__level_hidden')){
+    //     resultPortrait.closest.classList.remove('categories-item__level_hidden')  
+    // }
     
     document.addEventListener('click', (event) => {
         const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
-
         switch (actionType) {
             case 'open-portrait':
                 localStorage.setItem('style', 'Portrait')

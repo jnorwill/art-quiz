@@ -11,7 +11,7 @@ import {
     click, correctanswer, endround,
     wronganswer
 } from 'src/assets/audio/index.js'
-
+// localStorage.clear()
 const openPage = (newPage) => {
     document.body.innerHTML = newPage
 }
@@ -35,9 +35,16 @@ export const playAudioWrong = () => {
     audio.play()
 }
 
+export const playAudioCorrect = () => {
+    let volume = localStorage.getItem('volume')
+    const audio = new Audio()
+    audio.src = correctanswer
+    audio.volume = volume / 100
+    audio.play()
+}
+
 document.body.innerHTML = homeHtml
 let whatWasBefore = 'home'
-let whatStyle
 document.addEventListener('click', (event) => {
 
     const actionType = (event.target.closest('.categories-item') || event.target).dataset?.actionType
@@ -68,6 +75,7 @@ document.addEventListener('click', (event) => {
             categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-artist'
+            localStorage.setItem(`whatWasBefore`, `caregories-artist`)
             openPage(categoriesHtml)
             break;
 
@@ -75,6 +83,7 @@ document.addEventListener('click', (event) => {
             categoriesRunScript()
             playAudioClick()
             whatWasBefore = 'caregories-picture'
+            localStorage.setItem(`whatWasBefore`, `caregories-picture`)
             openPage(categoriesHtml)
             break;
 
