@@ -4,6 +4,7 @@ import { playAudioWrong } from '../../index.js'
 import { playAudioClick } from '../../index.js'
 import { openPopUp } from '../../index.js'
 import images from '../../images.js'
+import { loadImg } from '../../index.js'
 import { runScript as resultRunScript } from '../result-pop-up/index.js'
 import { runScript as winHtmlScript } from '../win-pop-up'
 
@@ -46,7 +47,7 @@ export const runScript = () => {
         authorText.innerHTML = `${images[arr][indexPicture].author}`
         const randomRight = Math.floor(Math.random() * 4)
         const allStyles = Object.keys(images)
-        answerArr.forEach((item, index) => {
+        answerArr.forEach(async (item, index) => {
             if (item.classList.contains('wrong-answer')) {
                 item.classList.remove('wrong-answer')
             } else if (item.classList.contains('correct-answer')) {
@@ -58,15 +59,18 @@ export const runScript = () => {
             let pathWrong = images[type][randomWrong].imageNum
             const pathRight = images[arr][indexPicture].imageNum
             if (index === randomRight) {
+                await loadImg(pathRight,item)
                 item.style.backgroundImage = `url(${pathRight})`
                 item.classList.add('correct-answer')
             } else if (index != randomRight) {
                 if (images[type][randomWrong].author != images[arr][indexPicture].author) {
+                    await loadImg(pathWrong, item)
                     item.style.backgroundImage = `url(${pathWrong})`
                     item.classList.add('wrong-answer')
                 } else if (images[type][randomWrong].author === images[arr][indexPicture].author) {
                     randomWrong = Math.floor(Math.random() * 9)
                     pathWrong = images[type][randomWrong].imageNum
+                    await loadImg(pathWrong, item)
                     item.style.backgroundImage = `url(${pathWrong})`
                     item.classList.add('wrong-answer')
                 }

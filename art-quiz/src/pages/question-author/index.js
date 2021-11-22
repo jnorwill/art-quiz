@@ -2,16 +2,15 @@ import './index.scss'
 export {default} from './index.html'
 import { playAudioWrong } from '../../index.js'
 import { playAudioClick } from '../../index.js'
-import { playAudioEnd } from '../../index.js'
 import { openPopUp } from '../../index.js'
 import images from '../../images.js'
+import { loadImg } from '../../index.js'
 import { runScript as resultRunScript } from '../result-pop-up/index.js'
 import { runScript as winHtmlScript } from '../win-pop-up'
+import loadingGif from 'assets/img/loading.gif'
 
 export const runScript = () => {
     
-
-
     const timeCounter = document.querySelector('.question-counter')
     let isTime = localStorage.getItem('isTime')
     let secondsLeft = +localStorage.getItem('timeValue')
@@ -42,13 +41,23 @@ export const runScript = () => {
     let indexPicture = 0
     localStorage.setItem('indexPicture', `${indexPicture}`)
 
+    // const loadImg = (src) => {
+    //     return new Promise((resolve) => {
+    //         const img = new Image()
+    //         img.src = src
+    //         img.onload = resolve
+    //     })
+    // }
 
-    const changeQuestion = () => {
+
+    const changeQuestion = async () => {
         const style = localStorage.getItem('style')
         const whatWasBefore = localStorage.getItem(`whatWasBefore`)
         const arr = whatWasBefore + style
-        console.log(arr)
         const pathPicture = images[arr][indexPicture].imageNum
+    
+        await loadImg(pathPicture, pictureQuestion)
+     
         pictureQuestion.style.backgroundImage = `url(${pathPicture})`
         const randomRight = Math.floor(Math.random() * 4)
         const allStyles = Object.keys(images)

@@ -11,6 +11,8 @@ import {
     click, correctanswer, endround,
     wronganswer
 } from 'src/assets/audio/index.js'
+import loadingGif from 'assets/img/loading.gif'
+
 // localStorage.clear()
 const openPage = (newPage) => {
     document.body.innerHTML = newPage
@@ -18,38 +20,65 @@ const openPage = (newPage) => {
 export const openPopUp = (newPopUp) => {
     document.body.append(newPopUp)
 }
+const audioClick = new Audio()
+audioClick.src = click
 
 export const playAudioClick = () => {
     let volume = localStorage.getItem('volume')
-    const audio = new Audio()
-    audio.src = click
-    audio.volume = volume / 100
-    audio.play()
+    audioClick.volume = volume / 100
+    audioClick.play()
 }
+
+const AudioWrong = new Audio()
+AudioWrong.src = wronganswer
 
 export const playAudioWrong = () => {
     let volume = localStorage.getItem('volume')
-    const audio = new Audio()
-    audio.src = wronganswer
-    audio.volume = volume / 100
-    audio.play()
+    AudioWrong.volume = volume / 100
+    AudioWrong.play()
 }
+
+const audioCorrect = new Audio()
+audioCorrect.src = correctanswer
 
 export const playAudioCorrect = () => {
     let volume = localStorage.getItem('volume')
-    const audio = new Audio()
-    audio.src = correctanswer
-    audio.volume = volume / 100
-    audio.play()
+    audioCorrect.volume = volume / 100
+    audioCorrect.play()
 }
+
+const audioEnd = new Audio()
+audioEnd.src = endround
 
 export const playAudioEnd = () => {
     let volume = localStorage.getItem('volume')
-    const audio = new Audio()
-    audio.src = endround
-    audio.volume = volume / 100
-    audio.play()
+    audioEnd.volume = volume / 100
+    audioEnd.play()
 }
+
+export const loadImg = (src, imgNode) => {
+    if(imgNode) {
+        imgNode.classList.add('loading')
+    }
+
+    return new Promise((resolve) => {
+        const img = new Image()
+        img.src = src
+        img.onload = resolve
+    }).then(() => {
+        if(imgNode) {
+            imgNode.classList.add('loading-end')
+            setTimeout(() => {
+                imgNode.classList.remove('loading')
+                imgNode.classList.remove('loading-end')
+            }, 
+            // 300ms duration animation .loading
+            300)
+        }
+    })
+}
+
+loadImg(loadingGif)
 
 document.body.innerHTML = homeHtml
 let whatWasBefore = 'home'

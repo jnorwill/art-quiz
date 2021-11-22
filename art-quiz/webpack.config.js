@@ -42,14 +42,9 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(svg|png|jpg)$/,
+                test: /\.(svg|png|jpg|gif|mp3|wav)$/,
                 type: 'asset/resource'
             },
-            {
-                test: /\.(mp3|wav)$/,
-                type: 'asset/resource'
-            },
-           
         ]
     },
     plugins: [

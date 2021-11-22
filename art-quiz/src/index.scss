@@ -221,6 +221,49 @@ body {
     line-height: 102px;
 }
 
+
+
+.loading {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #000;
+        transition: 0.3s;
+    }
+
+    &::after {
+        content: 'Загрузка...';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform:translate(-50%, -50%);
+        width: 100%;
+        height: 20px;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #ffffff;
+
+        transition: 0.3s;
+    }
+
+    &-end {
+        &::after {
+            opacity: 0;
+        }
+        &::before {
+            opacity: 0;
+        }
+        
+    }
+}
+
 @media (min-width: 768px) {
     .button {
         height: 62px;
