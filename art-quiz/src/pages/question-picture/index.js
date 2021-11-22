@@ -6,11 +6,9 @@ import { openPopUp } from '../../index.js'
 import images from '../../images.js'
 import { runScript as resultRunScript } from '../result-pop-up/index.js'
 import { runScript as winHtmlScript } from '../win-pop-up'
-// import winHtml from '../win-pop-up'
-
 
 export const runScript = () => {
-    const timeCounter = document.querySelector('.categories-main')
+    const timeCounter = document.querySelector('.question-counter')
     let isTime = localStorage.getItem('isTime')
     let secondsLeft = +localStorage.getItem('timeValue')
     let timerId
@@ -35,7 +33,6 @@ export const runScript = () => {
     }
     startTimer()
 
-
     const authorText = document.querySelector('.question-picture-main__text_author')
     const answerArr = document.querySelectorAll('.question-picture-main__answer')
     let indexPicture = 0
@@ -44,7 +41,8 @@ export const runScript = () => {
 
     const changeQuestion = () => {
         const style = localStorage.getItem('style')
-        const arr = 'infPicture' + style
+        const whatWasBefore = localStorage.getItem(`whatWasBefore`)
+        const arr = whatWasBefore + style
         authorText.innerHTML = `${images[arr][indexPicture].author}`
         const randomRight = Math.floor(Math.random() * 4)
         const allStyles = Object.keys(images)
@@ -80,7 +78,6 @@ export const runScript = () => {
         changeQuestion()
 
     })
-
 
     let numberAnswer = 0
     document.addEventListener('click', (event) => {

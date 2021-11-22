@@ -58,7 +58,7 @@
         }
     }
     &__volume-current {
-        width: 50%;
+        width: 0%;
         height: 3px;
         border-radius: 5px;
         background: $active-button-color;
@@ -153,15 +153,6 @@
         justify-content: right;
         margin-top: 50px;
     }
-    // &__button {
-    //     width: 156px;
-    //     height: 56px;
-    // }
-    // &__button_save {
-    //     background-color: $active-button-color;
-    //     border: none;
-    //     color: #000000;
-    // }
 }
 
 @media (min-width: 768px) {
@@ -175,10 +166,6 @@
         &__title {
             margin-left: 5px;
         }
-        // &__button {
-        //     width: 293px;
-        //     height: 56px;
-        // }
     }
 }
 
