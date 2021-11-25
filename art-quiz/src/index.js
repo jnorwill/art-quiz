@@ -99,6 +99,7 @@ document.addEventListener('click', (event) => {
                 whatWasBefore = 'home'
             } else if (whatWasBefore === 'caregories-artist' || whatWasBefore === 'caregories-picture') {
                 openPage(categoriesHtml)
+                categoriesRunScript()
             }
             break;
 
@@ -109,19 +110,19 @@ document.addEventListener('click', (event) => {
             break;
 
         case 'open-caregories-artist':
+            whatWasBefore = 'caregories-artist'
+            localStorage.setItem(`whatWasBefore`, `artist`)
             openPage(categoriesHtml)
             categoriesRunScript()
             playAudioClick()
-            whatWasBefore = 'caregories-artist'
-            localStorage.setItem(`whatWasBefore`, `artist`)
             break;
 
         case 'open-caregories-picture':
+            whatWasBefore = 'caregories-picture'
+            localStorage.setItem(`whatWasBefore`, `picture`)
             openPage(categoriesHtml)
             categoriesRunScript()
             playAudioClick()
-            whatWasBefore = 'caregories-picture'
-            localStorage.setItem(`whatWasBefore`, `picture`)
             break;
 
         case 'open-quit-pop-up':
@@ -138,8 +139,10 @@ document.addEventListener('click', (event) => {
             playAudioClick()
             if (whatWasBefore === 'caregories-picture') {
                 openPage(categoriesHtml)
+                categoriesRunScript()
             } else if (whatWasBefore === 'caregories-artist') {
                 openPage(categoriesHtml)
+                categoriesRunScript()
             }
             break;
 
