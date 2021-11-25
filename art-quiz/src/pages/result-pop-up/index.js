@@ -4,11 +4,10 @@ import images from '../../images.js'
 import { playAudioWrong } from '../../index.js'
 import { playAudioCorrect } from '../../index.js'
 
-export const runScript = () => {
+export const runScript = (x) => {
     let div = document.createElement('div');
     div.className = "pop-up-container";
     div.innerHTML = Pagehtml
-
 
     const indicatorWrong = div.querySelector('.result__picture_wrong')
     const indicatorCorrect = div.querySelector('.result__picture_correct')
@@ -16,14 +15,14 @@ export const runScript = () => {
     const resultName = div.querySelector('.result__name')
     const resultAuthor = div.querySelector('.result__author')
     const resultYear = div.querySelector('.result__year')
-    const index = localStorage.getItem('indexPicture')
+    const indexPicture = localStorage.getItem('indexPicture')
     const style = localStorage.getItem('style')
     const whatWasBefore = localStorage.getItem(`whatWasBefore`)
     const arr = whatWasBefore + style
-    resultImg.style.backgroundImage = `url(${images[arr][index].imageNum})`
-    resultName.innerHTML = `${images[arr][index].name}`
-    resultAuthor.innerHTML = `${images[arr][index].author}`
-    resultYear.innerHTML = `${images[arr][index].year}`
+    resultImg.style.backgroundImage = `url(${images[arr][indexPicture].imageNum})`
+    resultName.innerHTML = `${images[arr][indexPicture].name}`
+    resultAuthor.innerHTML = `${images[arr][indexPicture].author}`
+    resultYear.innerHTML = `${images[arr][indexPicture].year}`
 
     const showIndicator  = () => {
         const answerNow = localStorage.getItem('answer now')

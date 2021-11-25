@@ -41,7 +41,6 @@ export const runScript = () => {
     })
 
     document.addEventListener('mouseup', () => {
-        console.log(contrilIsDown)
         if (contrilIsDown === 'yes') {
             document.removeEventListener('mousemove', controlVolume)
             contrilIsDown = 'no'

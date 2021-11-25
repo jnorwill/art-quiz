@@ -1,6 +1,5 @@
 import './index.scss'
-export {default} from './index.html'
-import { playAudioWrong } from '../../index.js'
+export { default } from './index.html'
 import { playAudioClick } from '../../index.js'
 import { openPopUp } from '../../index.js'
 import images from '../../images.js'
@@ -9,8 +8,9 @@ import { runScript as resultRunScript } from '../result-pop-up/index.js'
 import { runScript as winHtmlScript } from '../win-pop-up'
 import loadingGif from 'assets/img/loading.gif'
 
+
 export const runScript = () => {
-    
+
     const timeCounter = document.querySelector('.question-counter')
     let isTime = localStorage.getItem('isTime')
     let secondsLeft = +localStorage.getItem('timeValue')
@@ -48,9 +48,9 @@ export const runScript = () => {
         const whatWasBefore = localStorage.getItem(`whatWasBefore`)
         const arr = whatWasBefore + style
         const pathPicture = images[arr][indexPicture].imageNum
-    
+
         await loadImg(pathPicture, pictureQuestion)
-     
+
         pictureQuestion.style.backgroundImage = `url(${pathPicture})`
         const randomRight = Math.floor(Math.random() * 4)
         const allStyles = Object.keys(images)
@@ -68,19 +68,15 @@ export const runScript = () => {
             if (index === randomRight) {
                 item.innerHTML = `${pathRight}`
                 item.classList.add('correct-answer')
-                console.log('111', index, pathRight)
             } else if (index != randomRight) {
                 if (images[type][randomWrong].author != images[arr][indexPicture].author) {
                     item.innerHTML = `${pathWrong}`
                     item.classList.add('wrong-answer')
-                    console.log('222', index, pathWrong)
                 } else if (images[type][randomWrong].author === images[arr][indexPicture].author) {
-                    console.log('33', index, pathWrong)
                     randomWrong = Math.floor(Math.random() * 9)
                     pathWrong = images[type][randomWrong].author
                     item.innerHTML = `${pathWrong}`
                     item.classList.add('wrong-answer')
-                    console.log('444', index, pathWrong)
                 }
             }
         })
@@ -93,7 +89,12 @@ export const runScript = () => {
 
 
     let numberAnswer = 0
-    document.addEventListener('click', (event) => {
+
+    const cbId = String(Math.random()) + String(Math.random()) + String(Math.random())
+    window.activeCbId = cbId
+
+    const handleClick = (event) => {
+        if (window.activeCbId !== cbId) return
 
         const actionType = (event.target).dataset?.actionType
         switch (actionType) {
@@ -150,6 +151,7 @@ export const runScript = () => {
             default:
                 break;
         }
-    })
+    }
+    document.addEventListener('click', handleClick)
 
 }

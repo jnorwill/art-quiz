@@ -1,6 +1,5 @@
 import './index.scss'
 export { default } from './index.html'
-import { playAudioWrong } from '../../index.js'
 import { playAudioClick } from '../../index.js'
 import { openPopUp } from '../../index.js'
 import images from '../../images.js'
@@ -17,7 +16,7 @@ export const runScript = () => {
     const showTimer = () => {
         if (secondsLeft === 0) {
             localStorage.setItem('answer now', `false`)
-            openPopUp(resultRunScript())
+            openPopUp(resultRunScript(2))
             clearTimeout(timerId)
             secondsLeft = +localStorage.getItem('timeValue')
             indexPicture++
@@ -27,8 +26,8 @@ export const runScript = () => {
     }
     const startTimer = () => {
         if (isTime === 'On') {
-            timeCounter.innerHTML = `${secondsLeft}`.padStart(2, '0')
             timerId = setInterval(showTimer, 1000)
+            timeCounter.innerHTML = `${secondsLeft}`.padStart(2, '0')
         } else if (isTime === 'Off') {
             let timerId = false
             timeCounter.classList.add('hidden')
@@ -86,18 +85,23 @@ export const runScript = () => {
     })
 
     let numberAnswer = 0
-    document.addEventListener('click', (event) => {
+    const cbId = String(Math.random()) + String(Math.random()) + String(Math.random())
+    window.activeCbId = cbId
+
+    const handleClick = (event) => {
+        if(window.activeCbId !== cbId) return
 
         const actionType = (event.target).dataset?.actionType
         switch (actionType) {
             case 'open-result-pop-up':
+
                 const style = localStorage.getItem('style')
                 const whatWasBefore = localStorage.getItem(`whatWasBefore`)
                 playAudioClick()
                 clearTimeout(timerId)
                 secondsLeft = +localStorage.getItem('timeValue')
                 if (indexPicture < 10) {
-                    openPopUp(resultRunScript())
+                    openPopUp(resultRunScript(1))
                     indexPicture++
                     localStorage.setItem('indexPicture', `${indexPicture}`)
 
@@ -122,7 +126,6 @@ export const runScript = () => {
                     indexPicture = 0
                     localStorage.setItem('indexPicture', `${indexPicture}`)
                 }
-
                 break;
 
             case 'open-quit-pop-up':
@@ -142,5 +145,6 @@ export const runScript = () => {
             default:
                 break;
         }
-    })
+    }
+    document.addEventListener('click', handleClick)
 }
