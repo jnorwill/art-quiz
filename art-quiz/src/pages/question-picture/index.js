@@ -16,10 +16,12 @@ export const runScript = () => {
 
     const showTimer = () => {
         if (secondsLeft === 0) {
-            playAudioWrong()
+            localStorage.setItem('answer now', `false`)
             openPopUp(resultRunScript())
             clearTimeout(timerId)
             secondsLeft = +localStorage.getItem('timeValue')
+            indexPicture++
+            localStorage.setItem('indexPicture', `${indexPicture}`)
         } else secondsLeft--
         timeCounter.innerHTML = `${secondsLeft}`.padStart(2, '0')
     }
@@ -59,7 +61,7 @@ export const runScript = () => {
             let pathWrong = images[type][randomWrong].imageNum
             const pathRight = images[arr][indexPicture].imageNum
             if (index === randomRight) {
-                await loadImg(pathRight,item)
+                await loadImg(pathRight, item)
                 item.style.backgroundImage = `url(${pathRight})`
                 item.classList.add('correct-answer')
             } else if (index != randomRight) {
@@ -89,7 +91,6 @@ export const runScript = () => {
         const actionType = (event.target).dataset?.actionType
         switch (actionType) {
             case 'open-result-pop-up':
-
                 const style = localStorage.getItem('style')
                 const whatWasBefore = localStorage.getItem(`whatWasBefore`)
                 playAudioClick()
