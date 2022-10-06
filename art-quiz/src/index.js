@@ -29,6 +29,16 @@ export const playAudioClick = () => {
   audioClick.play()
 }
 
+if (!localStorage.getItem('isTime')) {
+  localStorage.setItem('isTime', 'Off')
+}
+if (!localStorage.getItem('timeValue')) {
+  localStorage.setItem('timeValue', '0')
+}
+if (!localStorage.getItem('volume')) {
+  localStorage.setItem('volume', '25')
+}
+
 const AudioWrong = new Audio()
 AudioWrong.src = wronganswer
 

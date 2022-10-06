@@ -94,6 +94,7 @@ export const runScript = () => {
 					if (time === 0) {
 						timeTogglePoint.classList.remove('settings-main__time-toggle-point-checked')
 						localStorage.setItem('isTime', 'Off')
+						timeLabel.innerHTML = `${localStorage.getItem('isTime')}`
 					}
 				}
 				break;
