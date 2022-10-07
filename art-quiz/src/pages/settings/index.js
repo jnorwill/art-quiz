@@ -68,6 +68,11 @@ export const runScript = () => {
 					timeTogglePoint.classList.remove('settings-main__time-toggle-point-checked')
 					localStorage.setItem('isTime', 'Off')
 				} else {
+					if (time === 0) {
+						time += 5
+						localStorage.setItem('timeValue', time)
+						timeValue.innerHTML = `${localStorage.getItem('timeValue')}`.padStart(2, '0')
+					}
 					timeTogglePoint.classList.add('settings-main__time-toggle-point-checked')
 					localStorage.setItem('isTime', 'On')
 				}
