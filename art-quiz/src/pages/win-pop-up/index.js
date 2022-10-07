@@ -11,6 +11,9 @@ export const runScript = () => {
 	const result = div.querySelector('.win__result')
 	const style = localStorage.getItem('style')
 	const whatWasBefore = localStorage.getItem(`whatWasBefore`)
+	if (!localStorage.getItem(`${whatWasBefore} ${style} correct answer`)) {
+		localStorage.setItem(`${whatWasBefore} ${style} correct answer`, '0')
+	}
 	const newResult = localStorage.getItem(`${whatWasBefore} ${style} correct answer`)
 	const permanentResult = localStorage.getItem(`permanent ${whatWasBefore} ${style} correct answer`)
 	if (newResult > permanentResult) {
