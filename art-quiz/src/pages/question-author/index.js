@@ -38,12 +38,19 @@ export const runScript = () => {
   }
   startTimer()
 
+  const moveProgress = () => {
+    const progressCurrent = document.querySelector('.question-author-header__current-progress')
+    progressCurrent.style.width = `${(+localStorage.getItem('indexPicture') + 1)* 10}%`
+  console.log(`${progressCurrent.style.width}`)
+  }
+
   const pictureQuestion = document.querySelector('.question-author-main__img')
   const answerArr = document.querySelectorAll('.question-author-main__answer')
   let indexPicture = 0
   localStorage.setItem('indexPicture', `${indexPicture}`)
 
   const changeQuestion = async () => {
+    moveProgress()
     const style = localStorage.getItem('style')
     const whatWasBefore = localStorage.getItem(`whatWasBefore`)
     const arr = whatWasBefore + style
